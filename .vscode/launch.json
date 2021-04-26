@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-App<amdecrm>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.raloliver.amdecrm.App",
+            "projectName": "amdecrm",
+            "args": ""
+        }
+    ]
+}
