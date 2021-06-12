@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
@@ -20,10 +21,24 @@ public class HomeController {
      * e a classe model mapping Model X ModelMap: Model é a interface, e o ModelMap
      * é a implementação da interface Model.
      */
+    // @GetMapping("/mensagem")
+    // public String mensagem(ModelMap modelMap) {
+    // modelMap.addAttribute("mensagem", "Carregando...");
+    // return "mensagem";
+    // }
+
+    /**
+     * ModelAndView: além do Model, informa-se a View que será utilizada. Bom pelo
+     * fato de diminuir a quantidade de parametros recebidos pelo método.
+     */
     @GetMapping("/mensagem")
-    public String mensagem(ModelMap modelMap) {
-        modelMap.addAttribute("mensagem", "Carregando...");
-        return "mensagem";
+    public ModelAndView mensagem() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("mensagem");
+        modelAndView.addObject("mensagem", "Carregando...");
+
+        return modelAndView;
     }
 
 }
