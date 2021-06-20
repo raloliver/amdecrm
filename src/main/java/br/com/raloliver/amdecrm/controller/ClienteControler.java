@@ -46,4 +46,15 @@ public class ClienteControler {
 
         return modelAndView;
     }
+
+    @GetMapping("/{id}/excluir")
+    public ModelAndView excluir(@PathVariable Long id) {
+        // #TODO: adicionar página para confirmar exclusão. No cenário atual, o cliente
+        // é excluído sem confirmar e após isso é redirecionado pra lista
+        ModelAndView modelAndView = new ModelAndView("redirect:/clientes");
+
+        clienteRepository.deleteById(id);
+
+        return modelAndView;
+    }
 }
