@@ -38,15 +38,19 @@
                     <tbody>
                         <tr th:each="cliente: ${clientes}">
                             <th scope="row" th:text="${cliente.id}"></th>
-                            <td th:text="${cliente.nome}"></td>
-                            <td th:text="${cliente.dataNascimento}"></td>
-                            <td th:text="${cliente.profissao}"></td>
                             <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn btn-secondary"><i class="bi-eye"></i></button>
-                                    <button type="button" class="btn btn-warning"><i
-                                            class="bi-pencil text-white"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="bi-trash"></i></button>
+                                <a th:text="${cliente.nome}" th:href="@{/clientes/{id} (id=${cliente.id})}"></a>
+                            </td>
+                            <td th:text="${cliente.dataNascimento}"></td>
+
+                            <td th:text=" ${cliente.profissao}"></td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-secondary" th:href="@{/clientes/{id} (id=${cliente.id})}">
+                                        <i class="bi-eye"></i>
+                                    </a>
+                                    <a class="btn btn-warning"><i class="bi-pencil text-white"></i></a>
+                                    <a class="btn btn-danger"><i class="bi-trash"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -54,7 +58,6 @@
                 </table>
             </div>
         </div>
-
         <div class="row">
             <div class="col-12">
                 <a href="#" class="btn btn-primary"><i class="bi-people"></i> Novo Cliente</a>

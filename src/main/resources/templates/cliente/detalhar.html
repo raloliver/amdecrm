@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title th:text="'amde CRM - ' + ${cliente.nome}">amde CRM - Detalhes</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">amde CRM</a>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 th:text="${cliente.nome}"></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" th:text="${cliente.profissao}"></div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${cliente.dataNascimento}"></h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, sequi est
+                            laboriosam qui optio accusantium reiciendis laborum ratione debitis rerum totam modi
+                            distinctio fuga deserunt atque ad enim voluptatibus itaque?</p>
+                        <div class="btn-group" role="group">
+                            <a href="/clientes" class="btn btn-secondary"><i class="bi-arrow-left"></i>
+                                Voltar</a>
+                            <a class="btn btn-warning"><i class="bi-pencil text-white"></i></button>
+                                <a class="btn btn-danger"><i class="bi-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <a href="#" class="btn btn-primary"><i class="bi-people"></i> Novo Cliente</a>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
