@@ -30,7 +30,7 @@ public class ClienteControler {
      */
     @GetMapping
     public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("cliente/listar.html");
+        ModelAndView modelAndView = new ModelAndView("cliente/listar");
 
         List<Cliente> clientes = clienteRepository.findAll();
         modelAndView.addObject("clientes", clientes);
@@ -40,7 +40,7 @@ public class ClienteControler {
 
     @GetMapping("/{id}")
     public ModelAndView detalhar(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("cliente/detalhar.html");
+        ModelAndView modelAndView = new ModelAndView("cliente/detalhar");
 
         Cliente cliente = clienteRepository.getOne(id);
         modelAndView.addObject("cliente", cliente);
@@ -64,7 +64,7 @@ public class ClienteControler {
      */
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar() {
-        ModelAndView modelAndView = new ModelAndView("cliente/cadastrar.html");
+        ModelAndView modelAndView = new ModelAndView("cliente/cadastrar");
 
         modelAndView.addObject("cliente", new Cliente());
 
@@ -73,6 +73,28 @@ public class ClienteControler {
 
     @PostMapping("/cadastrar")
     public ModelAndView cadastrar(Cliente cliente) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/clientes");
+
+        clienteRepository.save(cliente);
+
+        return modelAndView;
+    }
+
+    @GetMapping("/{id}/editar")
+    public ModelAndView editar(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("cliente/editar");
+
+        Cliente cliente = clienteRepository.getOne(id);
+        modelAndView.addObject("cliente", cliente);
+
+        return modelAndView;
+    }
+
+    /**
+     * O SB sabe a diferença ao criar ou editar (PostMapping) quando existe o ID
+     */
+    @PostMapping("/{id}/editar")
+    public ModelAndView editar(Cliente cliente) {
         ModelAndView modelAndView = new ModelAndView("redirect:/clientes");
 
         clienteRepository.save(cliente);

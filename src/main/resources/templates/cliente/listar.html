@@ -50,9 +50,13 @@
                                     <a class="btn btn-secondary" th:href="@{/clientes/{id} (id=${cliente.id})}">
                                         <i class="bi-eye"></i>
                                     </a>
-                                    <a class="btn btn-warning"><i class="bi-pencil text-white"></i></a>
+                                    <a class="btn btn-warning" th:href="@{/clientes/{id}/editar (id=${cliente.id})}">
+                                        <i class="bi-pencil text-white"></i>
+                                    </a>
                                     <a class="btn btn-danger" th:href="@{/clientes/{id}/excluir (id=${cliente.id})}"
-                                        onclick="return confirm('Está certo disso?');"><i class="bi-trash"></i></a>
+                                        onclick="return confirm('Está certo disso?');">
+                                        <i class="bi-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

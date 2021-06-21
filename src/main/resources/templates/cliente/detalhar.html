@@ -35,8 +35,13 @@
                         <div class="btn-group" role="group">
                             <a href="/clientes" class="btn btn-secondary"><i class="bi-arrow-left"></i>
                                 Voltar</a>
-                            <a class="btn btn-warning"><i class="bi-pencil text-white"></i></button>
-                                <a class="btn btn-danger"><i class="bi-trash"></i></a>
+                            <a class="btn btn-warning" th:href="@{/clientes/{id}/editar (id=${cliente.id})}">
+                                <i class="bi-pencil text-white"></i>
+                            </a>
+                            <a class="btn btn-danger" th:href="@{/clientes/{id}/excluir (id=${cliente.id})}"
+                                onclick="return confirm('Está certo disso?');">
+                                <i class="bi-trash"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

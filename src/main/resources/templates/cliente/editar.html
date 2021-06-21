@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>amde CRM - Novo Cliente</title>
+    <title th:text="'amde CRM - ' + ${cliente.nome}">amde CRM - Editar</title>
 </head>
 
 <body>
@@ -20,12 +20,14 @@
     <main class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Adicionar Cliente</h1>
+                <h1 th:text="${cliente.nome}"></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <form method="POST" th:object="${cliente}">
+                    <!-- #TODO: verificar se é possível coletar o ID na url -->
+                    <input type="hidden" class="form-control" id="nome" name="nome" th:field="*{id}">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}">
@@ -39,12 +41,28 @@
                         <label for="profissao" class="form-label">Profissão</label>
                         <input type="text" class="form-control" id="profissao" name="profissao" th:field="*{profissao}">
                     </div>
-                    <div class="btn-group" role="group">
-                        <a href="/clientes" class="btn btn-secondary"><i class="bi-arrow-left"></i>
-                            Voltar</a>
-                        <button type="submit" class="btn btn-primary"><i class="bi-people"></i> Salvar</button>
+                    <div class="d-flex">
+                        <div class="me-auto">
+                            <div class="btn-group" role="group">
+                                <a href="/clientes" class="btn btn-secondary"><i class="bi-arrow-left"></i>
+                                    Voltar</a>
+                                <button type="submit" class="btn btn-primary"><i class="bi-people"></i> Salvar</button>
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-danger" th:href="@{/clientes/{id}/excluir (id=${cliente.id})}"
+                                onclick="return confirm('Está certo disso?');">
+                                <i class="bi-trash"></i> Excluir
+                            </a>
+                        </div>
                     </div>
                 </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <a href="/clientes/cadastrar" class="btn btn-light"><i class="bi-people"></i> Novo Cliente</a>
             </div>
         </div>
     </main>
