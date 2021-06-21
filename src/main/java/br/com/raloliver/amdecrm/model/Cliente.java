@@ -1,5 +1,6 @@
 package br.com.raloliver.amdecrm.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * Padrão POJO: plain old java object (constructor, getters and setters)
@@ -26,10 +30,12 @@ public class Cliente {
 
     /**
      * param name in Column: definir o nome exato da coluna, ja que ao declara-la
-     * usamos camelCase
+     * usamos camelCase. DateTimeFormat: para enviar o horario em conjunto. Ao invés
+     * de utilizar o tipo "Date", usamos o "LocalDate" que vem com o timezone.
      */
     @Column(nullable = false, name = "data_nascimento")
-    private Date dataNascimento;
+    @DateTimeFormat(iso = ISO.DATE)
+    private LocalDate dataNascimento;
 
     @Column(nullable = false)
     private String profissao;
@@ -41,7 +47,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, Date dataNascimento, String profissao) {
+    public Cliente(Long id, String nome, LocalDate dataNascimento, String profissao) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -64,11 +70,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
