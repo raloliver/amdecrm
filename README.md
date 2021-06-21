@@ -22,4 +22,4 @@ taskkill /F /PID *<pid>*
 
 # DEMO (vídeo)
 
-![DEMO video](https://i.imgur.com/uN84DEx.png "Demo em vídeo")
+[![DEMO video](https://i.imgur.com/uN84DEx.png "Demo em vídeo")](https://youtu.be/oSJPrbPsRsg)
